@@ -12,7 +12,8 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        $todos = auth()->user()->todos()->latest()->get();
+        return view('todos.index', compact('todos'));
     }
 
     /**
@@ -20,7 +21,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todos.create');
     }
 
     /**
@@ -28,7 +29,16 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // バリデーション
+        // $validated = $request->validate([
+        //     'title' => 'required|string|max:255',
+        //     'description' => 'nullable|string',
+        // ]);
+
+        // // ログイン中のユーザーのToDoとして作成
+        // auth()->user()->todos()->create($validated);
+
+        // return redirect()->route('todos.index')->with('message', 'ToDoを作成しました。');
     }
 
     /**
@@ -36,7 +46,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        //
+        return view('todos.show', compact('todo'));
     }
 
     /**
@@ -44,7 +54,7 @@ class TodoController extends Controller
      */
     public function edit(Todo $todo)
     {
-        //
+        return view('todos.edit', compact('todo'));
     }
 
     /**
