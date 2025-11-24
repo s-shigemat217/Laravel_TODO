@@ -29,16 +29,16 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        // バリデーション
-        // $validated = $request->validate([
-        //     'title' => 'required|string|max:255',
-        //     'description' => 'nullable|string',
-        // ]);
+        //バリデーション
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
 
-        // // ログイン中のユーザーのToDoとして作成
-        // auth()->user()->todos()->create($validated);
+        // ログイン中のユーザーのToDoとして作成
+        auth()->user()->todos()->create($validated);
 
-        // return redirect()->route('todos.index')->with('message', 'ToDoを作成しました。');
+        return redirect()->route('todos.index')->with('message', 'ToDoを作成しました。');
     }
 
     /**

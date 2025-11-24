@@ -24,6 +24,7 @@
                         <flux:button variant="primary" type="submit" class="w-full mt-4 cursor-pointer">
                             送信する
                         </flux:button>
+
                     </form>
                 </div>
             </div>
