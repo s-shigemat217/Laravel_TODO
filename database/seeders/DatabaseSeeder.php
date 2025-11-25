@@ -15,11 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // 5人のユーザーを作成
+        for ($i = 1; $i <= 5; $i++) {
+            User::create([
+                'name' => "User {$i}",
+                'email' => "user{$i}@example.com",
+                'password' => bcrypt("password{$i}"),
+            ]);
+        }
+        // シーダーを実行
+        $this->call([
+            TodoSeeder::class,
         ]);
     }
 }
