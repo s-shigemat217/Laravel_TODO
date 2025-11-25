@@ -38,7 +38,7 @@ class TodoController extends Controller
         // ログイン中のユーザーのToDoとして作成
         auth()->user()->todos()->create($validated);
 
-        return redirect()->route('todos.index')->with('message', 'ToDoを作成しました。');
+        return redirect()->route('todos.index')->with('success', 'ToDoを作成しました。');
     }
 
     /**
@@ -46,7 +46,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        return view('todos.show', compact('todo'));
+        abort(404);
     }
 
     /**

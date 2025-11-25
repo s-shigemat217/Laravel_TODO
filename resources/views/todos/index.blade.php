@@ -27,35 +27,24 @@
                     @if ($todos->count() > 0)
                     <ul class="list-group">
                         @foreach ($todos as $todo)
-                            <li class="mb-4d-flex justify-content-between align-items-center">
-                                <p class="mb-1">{{ $todo->title }}</p>
-                                @if ($todo->description)
-                                <p class="mb-1 text-muted">{{ $todo->description }}</p>
-                                @endif
-                                <small class="text-secondary">
-                                    作成日時: {{ $todo->created_at->format('Y年m月d日 H:i') }}
-                                </small>
-                                <div>
-                                    <!-- ステータス表示 -->
-                                    @if ($todo->is_completed)
-                                        <span class="badge bg-success">完了</span>
-                                    @else
-                                        <span class="badge bg-warning">未完了</span>
-                                    @endif
-
-                                    <!-- アクション -->
-                                    <a href="{{ route('todos.edit', $todo) }}" class="btn btn-sm btn-warning ms-2">
-                                        編集
-                                    </a>
-                                    <form action="{{ route('todos.destroy', $todo) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('削除してもよろしいですか？')">
-                                            削除
-                                        </button>
-                                    </form>
+                            <li class="mt-4 pb-4">
+                                <div class="flex justify-between items-center">
+                                    <p class="text-primary font-bold mb-1 {{ $todo->is_completed ? 'line-through opacity-50 text-gray-500' : '' }}">{{ $todo->title }}</p>
+                                    <div class="flex justify-start items-center gap-2">
+                                        <flux:button href="{{ route('todos.edit', $todo) }}" icon:trailing="arrow-up-right">詳細／編集</flux:button>
+                                        <form action="{{ route('todos.destroy', $todo) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <flux:button variant="danger" type="submit" onclick="return confirm('削除してもよろしいですか？')">
+                                                削除
+                                            </flux:button>
+                                        </form>
+                                    </div>
                                 </div>
+                                <p class="mt-1 text-sm ">作成日時: {{ $todo->created_at->format('Y年m月d日 H:i') }}</small>
                             </li>
+                            {{-- <hr class="w-full"> --}}
+                            <hr class="border-gray-800" />
                         @endforeach
                     </ul>
                     @else
