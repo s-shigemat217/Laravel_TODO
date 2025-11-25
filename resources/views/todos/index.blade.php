@@ -1,26 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('ToDo List') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- 成功メッセージ表示 -->
+            <!-- メッセージ表示 -->
             <x-message type="success" :message="session('success')"/>
-            {{-- @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show my-4" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif --}}
-            <!-- ToDo作成ボタン -->
-            <div class="mt-4 mb-6 flex justify-end">
-                <a href="{{ route('todos.create') }}" class="btn btn-primary">
-                    + 新しいToDoを作成
-                </a>
-            </div>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
