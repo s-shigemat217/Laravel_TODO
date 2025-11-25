@@ -14,12 +14,25 @@
                         <div class="w-full flex flex-col">
                             <label for="title" class="font-semibold mt-4">件名</label>
                             <x-input-error :messages="$errors->get('title')" class="mt-2" />
-                            <input type="text" name="title" class="w-auto mt-1 p-2 border border-gray-300 rounded-md" id="title" max="255" required>
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                maxlength="255"
+                                class="w-auto mt-1 p-2 border border-gray-300 rounded-md"
+                                required
+                            >
                         </div>
                         <div class="w-full flex flex-col">
                             <label for="description" class="font-semibold mt-4">本文</label>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
-                            <textarea name="description" class="w-auto mt-1 p-2 border border-gray-300 rounded-md" id="description" cols="30" rows="8"></textarea>
+                            <textarea
+                                name="description"
+                                id="description"
+                                cols="30"
+                                rows="8"
+                                class="w-auto mt-1 p-2 border border-gray-300 rounded-md"  >
+                            </textarea>
                         </div>
                         <flux:button variant="primary" type="submit" class="w-full mt-4 cursor-pointer">
                             送信する

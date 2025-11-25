@@ -62,7 +62,14 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        //
+        //バリデーション
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'is_completed' => 'boolean',
+        ]);
+        $todo->update($validated);
+        return redirect()->route('todos.index')->with('success', '更新しました');
     }
 
     /**
@@ -70,6 +77,9 @@ class TodoController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+
+        return redirect()->route('todos.index')->with('success', 'ToDoを削除しました。');
+
     }
 }

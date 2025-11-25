@@ -25,18 +25,16 @@
                 <div class="p-6 text-gray-900">
                 <!-- ToDoがある場合 -->
                     @if ($todos->count() > 0)
-                    <div class="list-group">
+                    <ul class="list-group">
                         @foreach ($todos as $todo)
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="mb-1">{{ $todo->title }}</h5>
-                                    @if ($todo->description)
-                                        <p class="mb-1 text-muted">{{ $todo->description }}</p>
-                                    @endif
-                                    <small class="text-secondary">
-                                        作成日時: {{ $todo->created_at->format('Y年m月d日 H:i') }}
-                                    </small>
-                                </div>
+                            <li class="mb-4d-flex justify-content-between align-items-center">
+                                <p class="mb-1">{{ $todo->title }}</p>
+                                @if ($todo->description)
+                                <p class="mb-1 text-muted">{{ $todo->description }}</p>
+                                @endif
+                                <small class="text-secondary">
+                                    作成日時: {{ $todo->created_at->format('Y年m月d日 H:i') }}
+                                </small>
                                 <div>
                                     <!-- ステータス表示 -->
                                     @if ($todo->is_completed)
@@ -57,9 +55,9 @@
                                         </button>
                                     </form>
                                 </div>
-                            </div>
+                            </li>
                         @endforeach
-                    </div>
+                    </ul>
                     @else
                     <!-- ToDoがない場合 -->
                     <div class="alert alert-info" role="alert">
