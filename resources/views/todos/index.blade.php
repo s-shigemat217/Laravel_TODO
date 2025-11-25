@@ -8,12 +8,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- 成功メッセージ表示 -->
-            @if (session('success'))
+            <x-message type="success" :message="session('success')"/>
+            {{-- @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show my-4" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            @endif
+            @endif --}}
             <!-- ToDo作成ボタン -->
             <div class="mt-4 mb-6 flex justify-end">
                 <a href="{{ route('todos.create') }}" class="btn btn-primary">
@@ -47,6 +48,9 @@
                             <hr class="border-gray-800" />
                         @endforeach
                     </ul>
+                    <div class="mt-6">
+                        {{ $todos->links() }}
+                    </div>
                     @else
                     <!-- ToDoがない場合 -->
                     <div class="alert alert-info" role="alert">

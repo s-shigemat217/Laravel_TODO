@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
     public function index()
     {
-        $todos = auth()->user()->todos()->latest()->get();
+        $user = auth()->user();
+        $todos = $user->todos()->latest()->paginate(5);
         return view('todos.index', compact('todos'));
     }
 
