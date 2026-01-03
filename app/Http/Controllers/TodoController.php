@@ -25,8 +25,8 @@ class TodoController extends Controller
     {
         //バリデーション
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:1000'],
         ]);
 
         // ログイン中のユーザーのToDoとして作成

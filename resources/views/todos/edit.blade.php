@@ -32,13 +32,14 @@
                         </div>
                         <div class="w-full flex flex-col">
                             <label for="is_completed" class="font-semibold mt-4">
+                                <input type="hidden" name="is_completed" value="0">
                                 <input
                                     type="checkbox"
                                     id="is_completed"
                                     name="is_completed"
                                     value="1"
                                     class="rounded"
-                                    @if($todo->is_completed) checked @endif
+                                    @checked(old('is_completed', $todo->is_completed))
                                 >
                                 完了
                             </label>
