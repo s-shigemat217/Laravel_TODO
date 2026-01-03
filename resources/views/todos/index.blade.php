@@ -14,7 +14,13 @@
                                 <div class="flex justify-between items-center">
                                     <p class="text-primary font-bold mb-1 {{ $todo->is_completed ? 'line-through opacity-50 text-gray-500' : '' }}">{{ $todo->title }}</p>
                                     <div class="flex justify-start items-center gap-2">
-                                        <flux:button href="{{ route('todos.edit', $todo) }}" icon:trailing="arrow-up-right">詳細／編集</flux:button>
+                                        <flux:button
+                                            href="{{ route('todos.edit', $todo) }}"
+                                            class="whitespace-nowrap"
+                                            icon:trailing="arrow-up-right"
+                                        >
+                                            詳細／編集
+                                        </flux:button>
                                         <form action="{{ route('todos.destroy', $todo) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
