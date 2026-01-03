@@ -25,8 +25,7 @@
                                 id="description"
                                 cols="30"
                                 rows="8"
-                                class="w-auto mt-1 p-2 border border-gray-300 rounded-md"  >
-                            </textarea>
+                                class="w-auto mt-1 p-2 border border-gray-300 rounded-md"  ></textarea>
                         </div>
                         <flux:button variant="primary" type="submit" class="w-full mt-4 cursor-pointer">
                             送信する
